@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 
 export function App() {
   const [currentLang, setCurrentLang] = useState<Language>('de');
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true); // Default to German Flag Dark Mode
 
   useEffect(() => {
     // Update DOM HTML dir attribute dynamically
@@ -19,9 +20,27 @@ export function App() {
     document.documentElement.lang = currentLang;
   }, [currentLang]);
 
+  useEffect(() => {
+    // Toggle dark class on <html> element
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const handleToggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-amber-100 selection:text-amber-900">
-      <Navbar currentLang={currentLang} onLanguageChange={setCurrentLang} />
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 font-sans selection:bg-amber-100 selection:text-amber-900 dark:selection:bg-amber-900/50 dark:selection:text-amber-200 transition-colors">
+      <Navbar
+        currentLang={currentLang}
+        onLanguageChange={setCurrentLang}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={handleToggleDarkMode}
+      />
       <main>
         <HeroSection currentLang={currentLang} />
         <QualificationsSection currentLang={currentLang} />

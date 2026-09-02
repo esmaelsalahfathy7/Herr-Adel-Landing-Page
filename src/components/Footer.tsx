@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
 
   return (
     <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 relative">
-      {/* Subtle German Flag Top Line Accent */}
+      {/* German Flag Top Line Accent */}
       <div className="absolute top-0 left-0 right-0 h-1 grid grid-cols-3">
         <div className="bg-slate-800"></div>
         <div className="bg-rose-600"></div>
@@ -63,8 +63,8 @@ export const Footer: React.FC<FooterProps> = ({ currentLang }) => {
           </div>
 
           {/* Explicit Mandatory Credit Text */}
-          <div className="px-3 py-1 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 font-bold tracking-wide">
-            <span>Created by <strong className="text-amber-400">Esmael Salah</strong></span>
+          <div className="px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 font-bold tracking-wide">
+            <span>Created by <strong className="text-amber-400 font-black">Esmael Salah</strong></span>
           </div>
         </div>
 

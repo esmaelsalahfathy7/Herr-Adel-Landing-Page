@@ -63,13 +63,15 @@ export interface Translation {
     badge: string;
     title: string;
     subtitle: string;
+    zoomHint: string;
     items: Array<{
-      name: string;
-      role: string;
-      image: string;
-      quote: string;
-      rating: number;
+      id: string;
+      studentName: string;
+      achievement: string;
       tag: string;
+      rating: number;
+      image: string;
+      caption: string;
     }>;
   };
   faq: {
@@ -85,25 +87,17 @@ export interface Translation {
     badge: string;
     title: string;
     subtitle: string;
-    form: {
-      nameLabel: string;
-      namePlaceholder: string;
-      emailLabel: string;
-      emailPlaceholder: string;
-      phoneLabel: string;
-      phonePlaceholder: string;
-      goalLabel: string;
-      goalOptions: {
-        study: string;
-        job: string;
-        ausbildung: string;
-        scholarship: string;
-        other: string;
-      };
-      messageLabel: string;
-      messagePlaceholder: string;
-      submitBtn: string;
-      successMsg: string;
+    whatsappCard: {
+      title: string;
+      desc: string;
+      btnText: string;
+      phone: string;
+    };
+    gmailCard: {
+      title: string;
+      desc: string;
+      btnText: string;
+      email: string;
     };
     direct: {
       whatsappTitle: string;
@@ -138,7 +132,7 @@ export const translations: Record<Language, Translation> = {
       headline: "Deutsch B2 Perfektionieren für Beruf & Studium",
       subheadline: "Meistern Sie die deutsche Sprache auf B2-Niveau mit Dozent Adel Ghandy. Interaktiver Zoom-Unterricht, gezielte Prüfungsvorbereitung und echte Karrierechancen in Deutschland.",
       primaryCta: "Jetzt per WhatsApp buchen",
-      secondaryCta: "E-Mail Anfrage senden",
+      secondaryCta: "Per E-Mail / Gmail anfragen",
       metrics: {
         expLabel: "Jahre Erfahrung",
         expValue: "5+",
@@ -224,33 +218,37 @@ export const translations: Record<Language, Translation> = {
       },
     },
     testimonials: {
-      badge: "Erfahrungsberichte",
-      title: "Das sagen unsere erfolgreichen Schüler",
-      subtitle: "Echtes Feedback von Teilnehmern, die mit Herr Adel ihr B2-Zertifikat bestanden und ihre Träume verwirklicht haben.",
+      badge: "Echte WhatsApp-Erfolge",
+      title: "Studenten-Ergebnisse & Feedback Screenshots",
+      subtitle: "Echte Screenshots von Nachrichten unserer Schüler über bestandene Goethe-Prüfungen, Ausbildung-Zusagen und Job-Angebote.",
+      zoomHint: "Klicken Sie auf den Screenshot zum Vergrößern",
       items: [
         {
-          name: "Sarah Ahmed",
-          role: "Medizinstudentin in Berlin",
-          image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250",
-          quote: "Herr Adel erklärt die B2 Grammatik unglaublich anschaulich! Dank des Kurses habe ich das Goethe B2 Zertifikat beim ersten Versuch bestanden.",
+          id: "goethe",
+          studentName: "Sara Ahmed",
+          achievement: "Goethe-Zertifikat B2 Bestanden",
+          tag: "Goethe B2 Note 1.3",
           rating: 5,
-          tag: "Goethe B2 Bestanden",
+          image: "/src/assets/review_goethe.jpg",
+          caption: "Echter Screenshot einer Schüler-Nachricht nach dem Bestehen der Goethe B2 Prüfung.",
         },
         {
-          name: "Mahmoud Hassan",
-          role: "Ausbildung im IT-Bereich (München)",
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
-          quote: "Das Training mit Redewendungen B2 hat mein Selbstvertrauen beim Sprechen extrem gesteigert. Die Vorbereitung auf das Vorstellungsgespräch war perfekt!",
+          id: "ausbildung",
+          studentName: "Lukas Weber / Mahmoud",
+          achievement: "Ausbildung-Zulassung in München",
+          tag: "IT Ausbildung Zusage",
           rating: 5,
-          tag: "Ausbildung Zusage",
+          image: "/src/assets/review_ausbildung.jpg",
+          caption: "Freudige Nachricht über die Zusage für eine IT-Berufsausbildung in München.",
         },
         {
-          name: "Omar El-Sayed",
-          role: "Vodafone Deutschland Senior Specialist",
-          image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250",
-          quote: "Herr Adels Praxiserfahrung bei Vodafone hat den Unterschied gemacht. Die Simulationen von Kunden-Gesprächen gaben mir den entscheidenden Vorteil.",
+          id: "job",
+          studentName: "Anna Mueller / Omar",
+          achievement: "Jobangebot Vodafone Deutschland",
+          tag: "Karriere in Deutschland",
           rating: 5,
-          tag: "Job in Deutschland",
+          image: "/src/assets/review_job.jpg",
+          caption: "Screenshot einer Schülerin nach Erhalt ihres Arbeitsvertrages bei Vodafone Deutschland.",
         },
       ],
     },
@@ -282,28 +280,20 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     contact: {
-      badge: "Kontakt & Anmeldung",
-      title: "Starten Sie Ihre B2-Reise mit Herr Adel",
-      subtitle: "Haben Sie Fragen oder möchten Sie Ihren Platz im nächsten Zoom-Kurs reservieren? Kontaktieren Sie uns direkt.",
-      form: {
-        nameLabel: "Vollständiger Name",
-        namePlaceholder: "z.B. Max Mustermann",
-        emailLabel: "E-Mail-Adresse",
-        emailPlaceholder: "name@beispiel.de",
-        phoneLabel: "Telefon / WhatsApp-Nummer",
-        phonePlaceholder: "+49 152 31428204",
-        goalLabel: "Ihr Hauptziel",
-        goalOptions: {
-          study: "Studium an deutscher Hochschule",
-          job: "Arbeit / Job in Deutschland oder Ägypten",
-          ausbildung: "Berufsausbildung (Ausbildung)",
-          scholarship: "Stipendium (DAAD / IPS)",
-          other: "Sonstiges",
-        },
-        messageLabel: "Ihre Nachricht oder Frage",
-        messagePlaceholder: "Schreiben Sie uns Ihre Fragen zum B2-Kurs...",
-        submitBtn: "Anfrage per E-Mail absenden",
-        successMsg: "Vielen Dank! Ihre Anfrage wurde direkt an Adel@example.com gesendet. Wir melden uns in Kürze!",
+      badge: "Direkter Kontakt",
+      title: "Kontaktieren Sie Herr Adel Ghandy",
+      subtitle: "Keine Formulare nötig! Schreiben Sie direkt per WhatsApp oder senden Sie eine E-Mail über Gmail.",
+      whatsappCard: {
+        title: "Über WhatsApp buchen & anfragen",
+        desc: "Direkter Chat mit Herr Adel Ghandy. Erhalten Sie sofortige Antworten zu Kursstart und freien Plätzen.",
+        btnText: "WhatsApp Chat Öffnen",
+        phone: "+49 152 31428204",
+      },
+      gmailCard: {
+        title: "Per E-Mail / Gmail schreiben",
+        desc: "Öffnet direkt Ihren Gmail-Client zur schnellen Kontaktaufnahme per E-Mail.",
+        btnText: "E-Mail in Gmail verfassen",
+        email: "Adel@example.com",
       },
       direct: {
         whatsappTitle: "Direkter WhatsApp-Kontakt",
@@ -336,7 +326,7 @@ export const translations: Record<Language, Translation> = {
       headline: "إتقان اللغة الألمانية لمستوى B2 للعمل والدراسة",
       subheadline: "احترف قواعد ومحادثة اللغة الألمانية B2 مع المحاضر المعتمد أستاذ عادل غاندي. حصص زوم تفاعلية، تحضير معتمد للامتحانات وتأهيل كامل للسفر والعمل والمنح في ألمانيا.",
       primaryCta: "احجز الآن عبر واتساب",
-      secondaryCta: "أرسل استفساراً بالبريد",
+      secondaryCta: "تواصل عبر البريد / Gmail",
       metrics: {
         expLabel: "سنوات خبرة تعليمية",
         expValue: "+5",
@@ -422,33 +412,37 @@ export const translations: Record<Language, Translation> = {
       },
     },
     testimonials: {
-      badge: "آراء الطلاب",
-      title: "ماذا يقول طلابنا عن أستاذ عادل؟",
-      subtitle: "تجارب حقيقية لطلاب حققوا شهادات B2 وسافروا أو عملوا في المجال الألماني.",
+      badge: "نتائج حقيقية عبر الواتساب",
+      title: "آراء الطلاب وسكرين شوتس النجاح",
+      subtitle: "صور وسكرين شوتس حقيقية لمحادثات الطلاب بعد اجتياز امتحان Goethe B2 والحصول على قبول الأوسبيلدونج ووظائف ألمانيا.",
+      zoomHint: "اضغط على الصورة للتكبير واستعراض النتيجة",
       items: [
         {
-          name: "سارة أحمد",
-          role: "طالبة طب في برلين",
-          image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250",
-          quote: "شرح أستاذ عادل لقواعد B2 أزال كل التعقيدات! بفضله نجحت في امتحان Goethe B2 من أول محاولة.",
+          id: "goethe",
+          studentName: "سارة أحمد",
+          achievement: "اجتياز امتحان Goethe-Zertifikat B2",
+          tag: "درجات ممتازة غوته",
           rating: 5,
-          tag: "نجاح Goethe B2",
+          image: "/src/assets/review_goethe.jpg",
+          caption: "سكرين شوت محادثة الواتساب لنتيجة امتحان غوته B2 والاحتفال بالنجاح.",
         },
         {
-          name: "محمود حسن",
-          role: "متدرب أوسبيلدونج IT في ميونخ",
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
-          quote: "التدريب على Redewendungen جعلني أتحدث بثقة كبيرة في مقابلة الأوسبيلدونج وتم قبولي فوراً.",
+          id: "ausbildung",
+          studentName: "محمود حسن",
+          achievement: "قبول أوسبيلدونج IT في ميونخ",
+          tag: "عقد أوسبيلدونج رسمياً",
           rating: 5,
-          tag: "قبول أوسبيلدونج",
+          image: "/src/assets/review_ausbildung.jpg",
+          caption: "رسالة قبول الأوسبيلدونج في ميونخ بعد التدريب على المقابلات في الكورس.",
         },
         {
-          name: "عمر السيد",
-          role: "أخصائي في Vodafone Deutschland",
-          image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250",
-          quote: "خبرة أستاذ عادل في العمل بفودافون جعلت الكورس عملياً للغاية ومناسباً لمتطلبات السوق الحقيقية.",
+          id: "job",
+          studentName: "عمر السيد",
+          achievement: "عرض عمل في Vodafone Deutschland",
+          tag: "وظيفة براتب متميز",
           rating: 5,
-          tag: "وظيفة براتب ممتاز",
+          image: "/src/assets/review_job.jpg",
+          caption: "محادثة استلام عقد العمل بشركة فودافون ألمانيا بعد كورس المحادثات.",
         },
       ],
     },
@@ -480,28 +474,20 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     contact: {
-      badge: "تواصل معنا والتسجيل",
-      title: "ابدأ رحلتك لإتقان B2 مع أستاذ عادل",
-      subtitle: "هل لديك استفسار أو ترغب في الانضمام للدورة القادمة عبر زوم؟ تواصل معنا مباشرة.",
-      form: {
-        nameLabel: "الاسم الكامل",
-        namePlaceholder: "مثال: أحمد محمد",
-        emailLabel: "البريد الإلكتروني",
-        emailPlaceholder: "name@example.com",
-        phoneLabel: "رقم الهاتف / الواتساب",
-        phonePlaceholder: "+49 152 31428204",
-        goalLabel: "هدفك الأساسي",
-        goalOptions: {
-          study: "الدراسة الجامعية في ألمانيا",
-          job: "العمل في ألمانيا أو كول سنتر بمصر",
-          ausbildung: "التدريب المهني (Ausbildung)",
-          scholarship: "التقديم على منحة (DAAD / البرلمان)",
-          other: "هدف آخر",
-        },
-        messageLabel: "رسالتك أو استفسارك",
-        messagePlaceholder: "اكتب استفساراتك حول المواعيد أو تفاصيل كورس B2...",
-        submitBtn: "إرسال الاستفسار بالبريد",
-        successMsg: "تم إرسال استفسارك بنجاح إلى البريد الإلكتروني Adel@example.com وسنتواصل معك قريباً جداً!",
+      badge: "تواصل مباشر وبسيط",
+      title: "تواصل فوراً مع أستاذ عادل غاندي",
+      subtitle: "بدون نماذج معقدة! اضغط للتواصل المباشر عبر الواتساب أو فتح Gmail مباشرة.",
+      whatsappCard: {
+        title: "التواصل والحجز عبر الواتساب",
+        desc: "محادثة مباشرة مع أستاذ عادل غاندي للاستفسار فوراً عن مواعيد الكورس والأماكن المتاحة.",
+        btnText: "فتح محادثة الواتساب الآن",
+        phone: "+49 152 31428204",
+      },
+      gmailCard: {
+        title: "التواصل عبر البريد الإلكتروني (Gmail)",
+        desc: "يفتح تطبيق Gmail مباشرة لإرسال رسالتك واستفسارك دون الحاجة لملء أي نماذج.",
+        btnText: "كتابة رسالة عبر Gmail",
+        email: "Adel@example.com",
       },
       direct: {
         whatsappTitle: "واتساب مباشر",
@@ -534,7 +520,7 @@ export const translations: Record<Language, Translation> = {
       headline: "German B2 Mastery for Work and Study",
       subheadline: "Master advanced German grammar and conversational fluency with certified instructor Adel Ghandy. Interactive Zoom live classes, exam preparation, and career avenues in Germany.",
       primaryCta: "Book Now via WhatsApp",
-      secondaryCta: "Send Email Inquiry",
+      secondaryCta: "Contact via Gmail",
       metrics: {
         expLabel: "Years Teaching Exp.",
         expValue: "5+",
@@ -620,33 +606,37 @@ export const translations: Record<Language, Translation> = {
       },
     },
     testimonials: {
-      badge: "Student Reviews",
-      title: "What Our Students Say About Herr Adel",
-      subtitle: "Genuine feedback from learners who passed B2 exams and accomplished their ambitions in Germany.",
+      badge: "Authentic Student Proof",
+      title: "Student Review Screenshots",
+      subtitle: "Real chat screenshots from students celebrating Goethe B2 exam success, Ausbildung acceptances, and corporate job offers.",
+      zoomHint: "Click on any screenshot to expand and view in full size",
       items: [
         {
-          name: "Sarah Ahmed",
-          role: "Medical Student in Berlin",
-          image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250",
-          quote: "Herr Adel makes B2 grammar so simple and clear! Thanks to his guidance, I passed Goethe B2 on my first attempt.",
+          id: "goethe",
+          studentName: "Sarah Ahmed",
+          achievement: "Passed Goethe-Zertifikat B2",
+          tag: "Goethe B2 Top Score",
           rating: 5,
-          tag: "Goethe B2 Passed",
+          image: "/src/assets/review_goethe.jpg",
+          caption: "Authentic WhatsApp screenshot of Goethe B2 result celebration.",
         },
         {
-          name: "Mahmoud Hassan",
-          role: "IT Ausbildung Trainee in Munich",
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
-          quote: "The Redewendungen B2 practice boosted my spoken confidence immensely. I aced my Ausbildung interview!",
+          id: "ausbildung",
+          studentName: "Lukas Weber / Mahmoud",
+          achievement: "IT Ausbildung Acceptance in Munich",
+          tag: "Official Ausbildung Contract",
           rating: 5,
-          tag: "Ausbildung Accepted",
+          image: "/src/assets/review_ausbildung.jpg",
+          caption: "Student chat confirming IT Ausbildung admission in Munich.",
         },
         {
-          name: "Omar El-Sayed",
-          role: "Senior Specialist at Vodafone DE",
-          image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=250",
-          quote: "Herr Adel's practical experience at Vodafone was invaluable. The customer dialogue simulations gave me the edge.",
+          id: "job",
+          studentName: "Anna Mueller / Omar",
+          achievement: "Vodafone Deutschland Job Offer",
+          tag: "Germany Corporate Job",
           rating: 5,
-          tag: "German Corporate Job",
+          image: "/src/assets/review_job.jpg",
+          caption: "Job offer notification chat after completing conversation module.",
         },
       ],
     },
@@ -678,28 +668,20 @@ export const translations: Record<Language, Translation> = {
       ],
     },
     contact: {
-      badge: "Contact & Enrollment",
-      title: "Start Your B2 Journey with Herr Adel Ghandy",
-      subtitle: "Have questions or ready to reserve your seat for the upcoming Zoom cohort? Reach out to us today.",
-      form: {
-        nameLabel: "Full Name",
-        namePlaceholder: "e.g. John Doe",
-        emailLabel: "Email Address",
-        emailPlaceholder: "name@example.com",
-        phoneLabel: "Phone / WhatsApp Number",
-        phonePlaceholder: "+49 152 31428204",
-        goalLabel: "Primary Goal",
-        goalOptions: {
-          study: "University Study in Germany",
-          job: "Job in Germany or Call Center",
-          ausbildung: "Vocational Training (Ausbildung)",
-          scholarship: "Scholarships (DAAD / IPS)",
-          other: "Other Goal",
-        },
-        messageLabel: "Message / Question",
-        messagePlaceholder: "Write your questions regarding the B2 course...",
-        submitBtn: "Send Email Inquiry",
-        successMsg: "Thank you! Your message has been sent directly to Adel@example.com. We will get back to you shortly!",
+      badge: "Direct Contact",
+      title: "Connect Instantly with Herr Adel Ghandy",
+      subtitle: "No forms required! Chat directly on WhatsApp or compose an email in Gmail with one click.",
+      whatsappCard: {
+        title: "WhatsApp Direct Chat & Booking",
+        desc: "Chat directly with Herr Adel Ghandy to reserve your seat and get instant details on upcoming batch schedules.",
+        btnText: "Open WhatsApp Chat Now",
+        phone: "+49 152 31428204",
+      },
+      gmailCard: {
+        title: "Send Direct Email in Gmail",
+        desc: "Opens your Gmail application immediately to send an inquiry without filling out web forms.",
+        btnText: "Compose Email in Gmail",
+        email: "Adel@example.com",
       },
       direct: {
         whatsappTitle: "Direct WhatsApp",
