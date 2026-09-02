@@ -11,7 +11,12 @@ import { Footer } from './components/Footer';
 
 export function App() {
   const [currentLang, setCurrentLang] = useState<Language>('de');
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true); // Default to German Flag Dark Mode
+  
+  // Initialize dark mode state with fallback to true (German Flag Dark Mode)
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
 
   useEffect(() => {
     // Update DOM HTML dir attribute dynamically
@@ -21,11 +26,13 @@ export function App() {
   }, [currentLang]);
 
   useEffect(() => {
-    // Toggle dark class on <html> element
+    // Toggle dark class on <html> element & persist choice
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [isDarkMode]);
 
@@ -34,7 +41,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 font-sans selection:bg-amber-100 selection:text-amber-900 dark:selection:bg-amber-900/50 dark:selection:text-amber-200 transition-colors">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 font-sans selection:bg-amber-100 selection:text-amber-900 dark:selection:bg-amber-900/50 dark:selection:text-amber-200 transition-colors duration-300">
       <Navbar
         currentLang={currentLang}
         onLanguageChange={setCurrentLang}
