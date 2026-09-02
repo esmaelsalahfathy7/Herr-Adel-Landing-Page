@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  html[dir="rtl"] {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom aesthetic accents (German Flag theme subtle accents: Matte Black, Deep Crimson Red, Warm Amber Gold) */
+.bg-german-gradient {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.03) 0%, rgba(225, 29, 72, 0.03) 50%, rgba(245, 158, 11, 0.04) 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-german {
+  background: linear-gradient(90deg, #0f172a 0%, #e11d48 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-subtle {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.shadow-accent {
+  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.12);
+}
